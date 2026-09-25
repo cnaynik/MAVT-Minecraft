@@ -1,79 +1,51 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>D-MAVT Minecraft Server</title>
-  <meta name="description" content="Die inoffiziellen Minecraft-Server des D-MAVT an der ETH Zürich – Server-IPs, Status und Whitelist-Infos." />
-  <link rel="icon" href="assets/default-icon.svg" type="image/svg+xml" id="favicon" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=VT323&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minecraft Server Status</title>
+  <meta name="description" content="Live-Status der Minecraft-Server">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="wrap">
-    <header class="hero">
-      <span class="badge">inoffiziell · D-MAVT · ETH Zürich</span>
-      <h1 id="site-name">D-MAVT Minecraft</h1>
-      <p id="tagline" class="tagline"></p>
-      <p id="summary" class="summary" aria-live="polite"></p>
-    </header>
-
-    <!-- Server-Karten werden aus config.js erzeugt -->
-    <div id="servers" class="servers"></div>
-
-    <div class="grid">
-      <section class="card">
-        <h2>Auf die Whitelist</h2>
-        <p id="wl-intro"></p>
-        <ol id="wl-steps" class="steps"></ol>
-        <div id="wl-buttons" class="btn-row"></div>
-      </section>
-
-      <section class="card" id="rules-card">
-        <h2>Regeln</h2>
-        <ul id="rules" class="rules"></ul>
-      </section>
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Server-Status</p>
+      <h1 id="site-name">Minecraft</h1>
+      <p id="site-tagline" class="tagline"></p>
+      <p class="summary" id="summary" aria-live="polite"></p>
     </div>
+  </header>
 
-    <footer class="footer">
-      <p>Inoffizielles Projekt von Studierenden – nicht mit der ETH Zürich oder dem D-MAVT verbunden.<br />
-      Minecraft ist eine Marke von Mojang Studios. Status via <a href="https://mcsrvstat.us" target="_blank" rel="noopener">mcsrvstat.us</a>.</p>
-      <p id="updated" class="hint"></p>
-    </footer>
-  </main>
-
-  <template id="server-tpl">
-    <section class="card server-card" aria-live="polite">
-      <div class="server">
-        <img class="server-icon" src="assets/default-icon.svg" alt="Server-Icon" width="64" height="64" />
-        <div class="server-main">
-          <div class="server-top">
-            <span class="server-name"></span>
-            <span class="status status-loading"><i></i><span>lädt …</span></span>
-          </div>
-          <div class="motd">Server-Text wird geladen …</div>
-        </div>
-        <div class="server-meta">
-          <div><span class="meta-label">Spieler</span><span class="meta-value players">–</span></div>
-          <div><span class="meta-label">Version</span><span class="meta-value version">–</span></div>
-        </div>
-      </div>
-      <p class="server-desc" hidden></p>
-      <div class="ip-row">
-        <span class="meta-label">Adresse</span>
-        <code class="ip"></code>
-        <button class="btn btn-primary copy" type="button">IP kopieren</button>
-      </div>
-      <div class="players-wrap" hidden>
-        <span class="meta-label">Gerade online</span>
-        <ul class="player-list"></ul>
+  <main class="wrap">
+    <section aria-labelledby="h-servers">
+      <h2 id="h-servers" class="section-title">Server</h2>
+      <div id="servers" class="grid">
+        <p class="empty">Server werden geladen …</p>
       </div>
     </section>
-  </template>
+
+    <div class="info-grid">
+      <section id="whitelist" class="panel" aria-labelledby="h-whitelist" hidden>
+        <h2 id="h-whitelist">Whitelist</h2>
+        <p id="whitelist-intro"></p>
+        <ol id="whitelist-steps" class="steps"></ol>
+        <div id="whitelist-buttons" class="btn-row"></div>
+      </section>
+
+      <section id="rules" class="panel" aria-labelledby="h-rules" hidden>
+        <h2 id="h-rules">Regeln</h2>
+        <ul id="rules-list" class="rules"></ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="wrap footer">
+    <span id="updated">–</span>
+    <span>Live-Daten via <a href="https://mcsrvstat.us" rel="noopener">mcsrvstat.us</a></span>
+  </footer>
 
   <script src="config.js"></script>
-  <script src="script.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

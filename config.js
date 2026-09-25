@@ -1,5 +1,8 @@
 // ============================================================
-//  KONFIGURATION – nur diese Datei musst du anpassen.
+//  KONFIGURATION – allgemeine Einstellungen der Seite.
+//  Die Server selbst stehen je in einer eigenen Datei im
+//  Ordner "servers/" (1.js, 2.js, 3.js, …). Siehe servers/1.js.
+//
 //  Server-Text (MOTD), Server-Grafik (Icon), Spielerzahl und
 //  Version werden automatisch live von jedem Server geladen.
 // ============================================================
@@ -9,24 +12,10 @@ window.SERVER_CONFIG = {
   name: "D-MAVT Minecraft",
   tagline: "Die inoffiziellen Minecraft-Server des D-MAVT 2026 an der ETH Zürich.",
 
-  // >>> Deine Server. Beliebig viele Einträge; nur "ip" ist Pflicht.
-  //   name         – Anzeigename (sonst wird die IP angezeigt)
-  //   ip           – Adresse, mit :port falls nicht Standard
-  //   edition      – "java" (Standard) oder "bedrock"
-  //   description  – optionaler kurzer Text unter der Karte
-  //   iconOverride – optional eigene Grafik, z. B. "assets/survival.png"
-  servers: [
-    {
-      name: "Create",
-      ip: "mc.willisch.xyz:25567",
-      description: "Ein Beschrieb",
-    },
-    // {
-    //   name: "Bedrock / Handy",
-    //   ip: "mc.example.ch:19132",
-    //   edition: "bedrock",
-    // },
-  ],
+  // Ordner mit den Server-Dateien. Die Seite lädt 1.js, 2.js, 3.js …
+  // der Reihe nach, bis 3 Nummern hintereinander fehlen.
+  // Die Reihenfolge auf der Seite entspricht der Nummer.
+  serverDir: "servers/",
 
   // So kommt man auf die Whitelist (gilt für alle Server)
   whitelist: {
