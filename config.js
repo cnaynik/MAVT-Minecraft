@@ -17,9 +17,9 @@ window.SERVER_CONFIG = {
   //   iconOverride – optional eigene Grafik, z. B. "assets/survival.png"
   servers: [
     {
-      name: "Survival",
-      ip: "mc.example.ch",
-      description: "Unsere Hauptwelt – Vanilla Survival.",
+      name: "Create",
+      ip: "mc.willisch.xyz:25567",
+      description: "Ein Beschrieb",
     },
     {
       name: "Creative",
