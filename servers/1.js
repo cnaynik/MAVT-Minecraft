@@ -21,7 +21,7 @@
 addServer({
   name: "Create",
   ip: "mc.willisch.xyz:25567",
-  description: "Ein Beschrieb",
+  description: "IP-Adresse:",
 
   modpack: {
     url: "https://mega.nz/folder/GfIDxTzD#yRPtVDKGeqeH9Nr7nw3YNA",
