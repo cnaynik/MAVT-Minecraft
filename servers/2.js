@@ -23,6 +23,5 @@ addServer({
   ip: "mc.willisch.xyz",
   description: "IP-Adresse:",
 
-  
-  },
+
 });
