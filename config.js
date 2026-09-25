@@ -7,7 +7,7 @@
 window.SERVER_CONFIG = {
   // Anzeigename & Untertitel oben auf der Seite
   name: "D-MAVT Minecraft",
-  tagline: "Der inoffizielle Minecraft-Server des D-MAVT an der ETH Zürich.",
+  tagline: "Die inoffiziellen Minecraft-Server des D-MAVT 2026 an der ETH Zürich.",
 
   // >>> Deine Server. Beliebig viele Einträge; nur "ip" ist Pflicht.
   //   name         – Anzeigename (sonst wird die IP angezeigt)
@@ -21,11 +21,6 @@ window.SERVER_CONFIG = {
       ip: "mc.willisch.xyz:25567",
       description: "Ein Beschrieb",
     },
-    {
-      name: "Creative",
-      ip: "creative.example.ch",
-      description: "Bauen ohne Grenzen, z. B. Nachbauten vom ML-Gebäude.",
-    },
     // {
     //   name: "Bedrock / Handy",
     //   ip: "mc.example.ch:19132",
@@ -36,17 +31,17 @@ window.SERVER_CONFIG = {
   // So kommt man auf die Whitelist (gilt für alle Server)
   whitelist: {
     intro:
-      "Die Server sind per Whitelist geschützt, damit sie unter uns MAVTlern bleiben. So wirst du freigeschaltet:",
+      "Die Server sind per Whitelist geschützt. So wirst du freigeschaltet:",
     steps: [
-      "Tritt unserem Discord bei (Link unten) oder schreib uns eine Mail.",
+      "Tritt unserem Discord bei (Link unten) und schreibe eine Nachricht.",
       "Schick deinen <b>Minecraft-Namen</b> (Java Edition) und kurz, dass du am D-MAVT studierst oder arbeitest.",
       "Wir fügen dich zur Whitelist hinzu – meist innerhalb von 24 Stunden.",
       "Server-IP kopieren, in Minecraft unter <i>Multiplayer → Server hinzufügen</i> einfügen und losspielen.",
     ],
     // Buttons unter den Schritten. Einträge mit leerer url werden ausgeblendet.
     buttons: [
-      { label: "Discord beitreten", url: "https://discord.gg/DEIN-INVITE" },
-      { label: "Mail schreiben", url: "mailto:deine-adresse@ethz.ch?subject=Whitelist%20D-MAVT%20Server" },
+      { label: "Discord beitreten", url: "https://discord.gg/X9TbQr5Js" },
+      //{ label: "Mail schreiben", url: "mailto:deine-adresse@ethz.ch?subject=Whitelist%20D-MAVT%20Server" },
     ],
   },
 
