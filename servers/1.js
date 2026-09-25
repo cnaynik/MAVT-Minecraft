@@ -24,8 +24,8 @@ addServer({
   description: "Ein Beschrieb",
 
   modpack: {
-    url: "https://www.curseforge.com/minecraft/modpacks/DEIN-MODPACK",
+    url: "https://mega.nz/folder/GfIDxTzD#yRPtVDKGeqeH9Nr7nw3YNA",
     label: "Modpack herunterladen",
-    note: "CurseForge · Version 1.0",
+    note: "NeoForge · Version 1.21.1",
   },
 });
