@@ -1,0 +1,209 @@
+:root {
+  --bg: #111317;
+  --bg-2: #171a20;
+  --card: #1c2027;
+  --card-border: #2c313b;
+  --text: #e8eaee;
+  --muted: #9aa1ad;
+  --eth: #215caf;
+  --eth-light: #4f86d6;
+  --grass: #5da130;
+  --grass-dark: #3f7420;
+  --red: #e0524b;
+  --amber: #e0a33a;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+    radial-gradient(ellipse at top, rgba(33,92,175,.25), transparent 60%);
+  background-size: 32px 32px, 32px 32px, 100% 100%;
+  line-height: 1.55;
+}
+
+a { color: var(--eth-light); }
+
+.wrap { max-width: 920px; margin: 0 auto; padding: 48px 16px 32px; }
+
+/* Hero */
+.hero { text-align: center; margin-bottom: 32px; }
+.badge {
+  display: inline-block;
+  font-family: "Silkscreen", monospace;
+  font-size: 12px;
+  letter-spacing: .06em;
+  padding: 4px 10px;
+  border: 2px solid var(--eth);
+  color: var(--eth-light);
+  background: rgba(33,92,175,.12);
+}
+h1 {
+  font-family: "Silkscreen", monospace;
+  font-weight: 400;
+  font-size: clamp(32px, 7vw, 56px);
+  line-height: 1.1;
+  margin: 16px 0 8px;
+  text-shadow: 4px 4px 0 #000;
+}
+.tagline { color: var(--muted); margin: 0 auto; max-width: 560px; font-size: 17px; }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 0 #0b0c0f;
+}
+h2 {
+  font-family: "Silkscreen", monospace;
+  font-weight: 400;
+  font-size: 20px;
+  margin: 0 0 12px;
+}
+
+/* Server card (Minecraft-Serverliste) */
+.server-card { background: #0e0f12; border-color: #3a3f4a; }
+.server {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+.server-desc { color: var(--muted); margin: 14px 0 0; }
+.summary {
+  font-family: "VT323", monospace;
+  font-size: 22px;
+  color: var(--grass);
+  margin: 12px 0 0;
+  min-height: 1.2em;
+}
+.players-wrap { margin-top: 14px; padding-top: 14px; border-top: 2px dashed var(--card-border); }
+.players-wrap .player-list { margin-top: 8px; }
+.server-icon {
+  width: 64px; height: 64px;
+  image-rendering: pixelated;
+  border: 2px solid #000;
+  background: #222;
+}
+.server-main { min-width: 0; }
+.server-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.server-name { font-family: "VT323", monospace; font-size: 26px; line-height: 1; }
+.motd {
+  font-family: "VT323", monospace;
+  font-size: 22px;
+  line-height: 1.15;
+  color: #aaaaaa;
+  margin-top: 6px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.server-meta { display: flex; flex-direction: column; gap: 8px; text-align: right; }
+.meta-label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+}
+.meta-value { font-family: "VT323", monospace; font-size: 24px; line-height: 1; }
+
+.status { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; }
+.status i { width: 10px; height: 10px; display: inline-block; }
+.status-online  { color: var(--grass); } .status-online i  { background: var(--grass); box-shadow: 0 0 8px var(--grass); }
+.status-offline { color: var(--red); }   .status-offline i { background: var(--red); }
+.status-loading { color: var(--amber); } .status-loading i { background: var(--amber); animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: .2; } }
+
+/* IP */
+.ip-row {
+  display: flex; gap: 12px; align-items: center;
+  flex-wrap: wrap; margin-top: 14px; padding-top: 14px;
+  border-top: 2px dashed var(--card-border);
+}
+.ip-row .meta-label { margin-right: 4px; }
+.ip {
+  font-family: "VT323", monospace;
+  font-size: clamp(24px, 5vw, 32px);
+  line-height: 1.1;
+  padding: 4px 14px;
+  background: var(--card);
+  border: 2px solid var(--card-border);
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+/* Buttons – Minecraft-artig */
+.btn {
+  font: inherit;
+  font-family: "Silkscreen", monospace;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 16px;
+  color: #fff;
+  background: #3b404a;
+  border: 2px solid #000;
+  box-shadow: inset 0 -4px 0 rgba(0,0,0,.35), inset 0 2px 0 rgba(255,255,255,.2);
+  transition: transform .05s;
+}
+.btn:hover { filter: brightness(1.15); }
+.btn:active { transform: translateY(2px); }
+.btn:focus-visible { outline: 3px solid var(--eth-light); outline-offset: 2px; }
+.btn-primary { background: var(--grass-dark); }
+.btn-eth { background: var(--eth); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+.hint { color: var(--muted); font-size: 14px; min-height: 1.4em; margin: 8px 0 0; }
+
+/* Grid */
+.grid { display: grid; grid-template-columns: 3fr 2fr; gap: 16px; }
+.grid .card { margin-bottom: 0; }
+.grid + .card, .grid + footer { margin-top: 16px; }
+
+.steps { padding: 0; margin: 0; list-style: none; counter-reset: s; }
+.steps li { counter-increment: s; position: relative; padding-left: 40px; margin-bottom: 12px; }
+.steps li::before {
+  content: counter(s);
+  position: absolute; left: 0; top: 0;
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  font-family: "Silkscreen", monospace; font-size: 13px;
+  background: var(--eth); border: 2px solid #000;
+}
+.rules { margin: 0; padding-left: 20px; }
+.rules li { margin-bottom: 8px; }
+
+/* Spieler */
+.player-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.player-list li {
+  display: flex; align-items: center; gap: 8px;
+  padding: 4px 10px 4px 4px;
+  background: #0e0f12; border: 2px solid var(--card-border);
+  font-family: "VT323", monospace; font-size: 20px;
+}
+.player-list img { width: 24px; height: 24px; image-rendering: pixelated; }
+
+.footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 32px; }
+
+@media (max-width: 720px) {
+  .wrap { padding-top: 32px; }
+  .grid { grid-template-columns: 1fr; }
+  .server { grid-template-columns: 56px 1fr; }
+  .server { align-items: start; }
+  .ip-row .meta-label { width: 100%; }
+  .ip { flex: 1 1 auto; text-align: center; }
+  .server-icon { width: 56px; height: 56px; }
+  .server-meta { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; text-align: left; }
+}
