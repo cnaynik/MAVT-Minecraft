@@ -24,7 +24,7 @@ addServer({
   description: "IP-Adresse:",
 
   modpack: {
-    url: "https://not-released.com",
+    url: "https://mega.nz/folder/aTxhUagL#nW3caeZdNJffvZitemTZsQ",
     label: "Modpack herunterladen",
     note: "NeoForge · Version 1.21.1",
   },
