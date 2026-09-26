@@ -20,7 +20,7 @@
 
 addServer({
   name: "Create",
-  ip: "mc.willisch.xyz:25567",
+  ip: "create.mc.mavt-gaming.com",
   description: "IP-Adresse:",
 
   modpack: {
