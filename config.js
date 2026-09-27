@@ -20,7 +20,7 @@ window.SERVER_CONFIG = {
   // So kommt man auf die Whitelist (gilt für alle Server)
   whitelist: {
     intro:
-      "Die Server sind per Whitelist geschützt. So wirst du freigeschaltet:",
+      "Einige Server sind per Whitelist geschützt. So wirst du freigeschaltet:",
     steps: [
       "Tritt unserem Discord bei (Link unten) und schreibe eine Nachricht.",
       "Schick deinen <b>Minecraft-Namen</b> (Java Edition) und kurz, dass du am D-MAVT studierst oder arbeitest.",
