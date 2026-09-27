@@ -125,7 +125,9 @@
       "</div>" +
       '<div class="motd"></div>' +
       '<ul class="meta">' +
-        (s.whitelist === false ? '<li class="tag tag-open">Keine Whitelist</li>' : "") +
+        (s.whitelist === false
+          ? '<li class="tag tag-open">Keine Whitelist</li>'
+          : '<li class="tag tag-wl"><a href="#whitelist" title="So kommst du auf die Whitelist">Whitelist</a></li>') +
         '<li class="tag">' + edition + '</li><li class="tag v-tag" hidden></li></ul>' +
       '<p class="desc">' + esc(s.description || "") + "</p>" +
       '<div class="ip-row"><code>' + esc(s.ip) + "</code>" +
