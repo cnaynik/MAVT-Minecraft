@@ -19,8 +19,8 @@
 // ============================================================
 
 addServer({
-  name: "vanilla-test",
-  ip: "mc.willisch.xyz",
+  name: "Ersti SMP",
+  ip: "smp.mc.mavt-gaming.com",
   description: "IP-Adresse:",
 
 
