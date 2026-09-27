@@ -10,8 +10,8 @@
 //    ip           – Adresse, mit :port falls nicht Standard
 //    edition      – "java" (Standard) oder "bedrock"
 //    description  – optionaler kurzer Text auf der Karte
-//    whitelist    – false = zeigt das Abzeichen „Keine Whitelist“
-//                   (weglassen = normaler Server mit Whitelist)
+//    whitelist    – false = Abzeichen „Keine Whitelist“
+//                   weglassen = Abzeichen „Whitelist“ (Standard)
 //    iconOverride – optional eigene Grafik, z. B. "assets/create.png"
 //    modpack      – optional, zeigt einen Modpack-Button:
 //                     url   – Link zum Modpack (Pflicht)
