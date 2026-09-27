@@ -124,7 +124,9 @@
         '<div class="players"><strong class="p-count">–</strong><span>Spieler</span></div>' +
       "</div>" +
       '<div class="motd"></div>' +
-      '<ul class="meta"><li class="tag">' + edition + '</li><li class="tag v-tag" hidden></li></ul>' +
+      '<ul class="meta">' +
+        (s.whitelist === false ? '<li class="tag tag-open">Keine Whitelist</li>' : "") +
+        '<li class="tag">' + edition + '</li><li class="tag v-tag" hidden></li></ul>' +
       '<p class="desc">' + esc(s.description || "") + "</p>" +
       '<div class="ip-row"><code>' + esc(s.ip) + "</code>" +
         '<button type="button" class="btn btn-ghost btn-copy">Kopieren</button></div>' +
