@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Minecraft Server Status</title>
   <meta name="description" content="Live-Status der Minecraft-Server">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
   <header class="hero">
@@ -18,6 +18,11 @@
   </header>
 
   <main class="wrap">
+    <section id="news" class="news" aria-labelledby="h-news" hidden>
+      <h2 id="h-news" class="section-title">News</h2>
+      <div id="news-list" class="news-list"></div>
+    </section>
+
     <section aria-labelledby="h-servers">
       <h2 id="h-servers" class="section-title">Server</h2>
       <div id="servers" class="grid">
@@ -45,7 +50,7 @@
     <span>Server Status via <a href="https://mc.willisch.xyz:8443/status" target="_blank" rel="noopener">Crafty</a></span>
   </footer>
 
-  <script src="config.js?v=3"></script>
-  <script src="app.js?v=3"></script>
+  <script src="config.js?v=4"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>

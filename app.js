@@ -14,6 +14,13 @@
     else console.warn("addServer: Eintrag ohne ip ignoriert", s);
   };
 
+  // Wird von jeder Datei in news/ aufgerufen.
+  const news = [];
+  window.addNews = function (n) {
+    if (n && (n.title || n.text)) { n._n = news.length; news.push(n); }
+    else console.warn("addNews: Eintrag ohne title/text ignoriert", n);
+  };
+
   // Alte Konfiguration mit servers: [...] in config.js funktioniert weiterhin.
   if (Array.isArray(CFG.servers)) CFG.servers.forEach(window.addServer);
 
@@ -53,9 +60,9 @@
     return walk(doc.body.firstChild, document.createDocumentFragment());
   }
 
-  // ---------- Server-Dateien laden: servers/1.js, 2.js, … ----------
-  function loadServerFiles() {
-    const dir = (CFG.serverDir || "servers/").replace(/\/?$/, "/");
+  // ---------- Nummerierte Dateien laden: <ordner>/1.js, 2.js, … ----------
+  function loadNumberedFiles(dirSetting, fallback) {
+    const dir = (dirSetting || fallback).replace(/\/?$/, "/");
     const max = CFG.maxServerFiles || 99;
     const bust = Math.floor(Date.now() / 60000); // Änderungen spätestens nach 1 Min. sichtbar
     return new Promise((resolve) => {
@@ -71,6 +78,8 @@
       next();
     });
   }
+  const loadServerFiles = () => loadNumberedFiles(CFG.serverDir, "servers/");
+  const loadNewsFiles = () => loadNumberedFiles(CFG.newsDir, "news/");
 
   // ---------- Statische Bereiche ----------
   function renderStatic() {
@@ -223,8 +232,61 @@
     renderSummary();
   }
 
+  // ---------- News ----------
+  // Datum "JJJJ-MM-TT" als lokales Datum lesen (ohne Zeitzonen-Verschiebung).
+  function parseDate(str) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(str || ""));
+    return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null;
+  }
+
+  // Kleines, sicheres Markdown: **fett**, *kursiv*, [Text](Link),
+  // Leerzeile = neuer Absatz, Zeilenumbruch = neue Zeile.
+  function miniMarkdown(text) {
+    const src = Array.isArray(text) ? text.join("\n\n") : String(text || "");
+    return src.trim().split(/\n\s*\n/).map((para) => {
+      let h = esc(para.trim());
+      h = h.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, label, url) => {
+        const u = safeUrl(url.replace(/&amp;/g, "&"));
+        return u ? '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + label + "</a>" : label;
+      });
+      h = h.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      h = h.replace(/(^|[^*])\*([^*\s][^*]*?)\*/g, "$1<em>$2</em>");
+      return "<p>" + h.replace(/\n/g, "<br>") + "</p>";
+    }).join("");
+  }
+
+  function renderNews() {
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const visible = news
+      .filter((n) => { const u = parseDate(n.until); return !u || u >= today; })
+      .sort((a, b) => {
+        const da = parseDate(a.date), db = parseDate(b.date);
+        if (da && db && +da !== +db) return db - da;   // neueste zuerst
+        if (!!da !== !!db) return da ? -1 : 1;
+        return b._n - a._n;                             // sonst höhere Nummer zuerst
+      });
+    const box = $("#news");
+    if (!box) return;
+    box.hidden = !visible.length;
+    $("#news-list").innerHTML = visible.map((n) => {
+      const d = parseDate(n.date);
+      const dateHtml = d
+        ? '<time class="news-date" datetime="' + esc(n.date) + '">' +
+          d.toLocaleDateString("de-CH", { day: "2-digit", month: "2-digit", year: "numeric" }) + "</time>"
+        : "";
+      return '<article class="panel news-item">' +
+        '<div class="news-head">' +
+          (n.title ? "<h3>" + esc(n.title) + "</h3>" : "") + dateHtml +
+        "</div>" +
+        '<div class="news-body">' + miniMarkdown(n.text) + "</div>" +
+        "</article>";
+    }).join("");
+  }
+
   async function init() {
     renderStatic();
+    await loadNewsFiles();
+    renderNews();
     await loadServerFiles();
 
     const grid = $("#servers");
