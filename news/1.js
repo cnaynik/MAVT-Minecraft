@@ -18,7 +18,7 @@
 // ============================================================
 
 addNews({
-  title: "Stress Test",
+  title: "Stress Test - Ersti SMP",
   date: "2026-09-28",
   until: "2026-09-30",
 
