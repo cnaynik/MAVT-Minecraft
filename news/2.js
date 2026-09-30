@@ -22,7 +22,7 @@ addNews({
   date: "2026-09-30",
   until: "2026-01-02",
 
-  text: `
+  text: `More infos via the Discord server.
 
 `,
 });
