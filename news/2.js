@@ -20,7 +20,7 @@
 addNews({
   title: "Stress Test completed - SMP start planned for Friday 2. Nov. 18:00 GMT +2",
   date: "2026-09-30",
-  until: "2026-01-02",
+  until: "2026-10-02",
 
   text: `More infos via the Discord server.
 
