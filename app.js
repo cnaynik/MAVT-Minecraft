@@ -83,7 +83,7 @@
 
   // ---------- Statische Bereiche ----------
   function renderStatic() {
-    if (CFG.name) { $("#site-name").textContent = CFG.name; document.title = CFG.name + " – Server-Status"; }
+    if (CFG.name) { $("#site-name").textContent = CFG.name; document.title = CFG.name + " – Server status"; }
     if (CFG.tagline) $("#site-tagline").textContent = CFG.tagline;
   }
 
@@ -94,9 +94,9 @@
     const url = safeUrl(mp.url);
     if (!url) return "";
     return '<div class="modpack">' +
-      '<span class="label">Modpack benötigt</span>' +
+      '<span class="label">Modpack required</span>' +
       '<a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener">' +
-      esc(mp.label || "Modpack herunterladen") + "</a>" +
+      esc(mp.label || "Download modpack") + "</a>" +
       (mp.note ? '<span class="note">' + esc(mp.note) + "</span>" : "") +
       "</div>";
   }
@@ -139,7 +139,7 @@
         (r.text ? '<div class="rule-text">' + miniMarkdown(r.text) + "</div>" : "") +
         "</li>";
     }).join("") + "</ol>";
-    openDialog((s.name || s.ip) + " – " + (s.rulesTitle || "Regelwerk"),
+    openDialog((s.name || s.ip) + " – " + (s.rulesTitle || "Rulebook"),
       s.rulesIntro ? miniMarkdown(s.rulesIntro) : "", body, opener);
   }
 
@@ -175,26 +175,26 @@
         '<img class="icon placeholder" alt="" width="56" height="56">' +
         '<div class="head-text">' +
           "<h3>" + esc(s.name || s.ip) + "</h3>" +
-          '<span class="status"><span class="dot"></span><span class="status-text">Wird geladen …</span></span>' +
+          '<span class="status"><span class="dot"></span><span class="status-text">Loading …</span></span>' +
         "</div>" +
-        '<div class="players"><strong class="p-count">–</strong><span>Spieler</span></div>' +
+        '<div class="players"><strong class="p-count">–</strong><span>Players</span></div>' +
       "</div>" +
       '<div class="motd"></div>' +
       '<ul class="meta">' +
         (hasRules(s)
-          ? '<li><button type="button" class="tag tag-btn btn-rules" aria-haspopup="dialog">§ Regelwerk §</button></li>'
+          ? '<li><button type="button" class="tag tag-btn btn-rules" aria-haspopup="dialog">§ Rulebook §</button></li>'
           : "") +
         (s.whitelist === false
-          ? '<li class="tag tag-open">Keine Whitelist</li>'
+          ? '<li class="tag tag-open">No whitelist</li>'
           : wlInfo
             ? '<li><button type="button" class="tag tag-btn btn-wl" aria-haspopup="dialog">Whitelist</button></li>'
             : '<li class="tag tag-wl">Whitelist</li>') +
         '<li class="tag">' + edition + '</li><li class="tag v-tag" hidden></li></ul>' +
       '<p class="desc">' + esc(s.description || "") + "</p>" +
       '<div class="ip-row"><code>' + esc(s.ip) + "</code>" +
-        '<button type="button" class="btn btn-ghost btn-copy">Kopieren</button></div>' +
+        '<button type="button" class="btn btn-ghost btn-copy">Copy</button></div>' +
       modpackHtml(s.modpack) +
-      '<details class="player-list" hidden><summary>Wer ist online?</summary><ul></ul></details>';
+      '<details class="player-list" hidden><summary>Who\'s online?</summary><ul></ul></details>';
 
     const img = card.querySelector(".icon");
     if (s.iconOverride) { img.src = s.iconOverride; img.classList.remove("placeholder"); }
@@ -209,8 +209,8 @@
         const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
         document.execCommand("copy");
       }
-      copyBtn.textContent = "Kopiert ✓";
-      setTimeout(() => (copyBtn.textContent = "Kopieren"), 1600);
+      copyBtn.textContent = "Copied ✓";
+      setTimeout(() => (copyBtn.textContent = "Copy"), 1600);
     });
 
     const wlBtn = card.querySelector(".btn-wl");
@@ -234,7 +234,7 @@
     } catch (e) {
       console.warn("Status für", s.ip, "nicht abrufbar:", e);
       card.dataset.state = "offline";
-      card.querySelector(".status-text").textContent = "Status nicht abrufbar";
+      card.querySelector(".status-text").textContent = "Status unavailable";
     }
   }
 
@@ -278,10 +278,10 @@
     const on = servers.filter((s) => s._isOnline).length;
     const players = servers.reduce((n, s) => n + (s._online || 0), 0);
     $("#summary").textContent = servers.length
-      ? on + " von " + servers.length + " Server online · " + players + " Spieler gerade im Spiel"
+      ? on + " of " + servers.length + " servers online · " + players + (players === 1 ? " player" : " players") + " in game"
       : "";
-    $("#updated").textContent = "Zuletzt aktualisiert: " +
-      new Date().toLocaleTimeString("de-CH", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+    $("#updated").textContent = "Last updated: " +
+      new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
   }
 
   async function refreshAll() {
@@ -329,7 +329,7 @@
       const d = parseDate(n.date);
       const dateHtml = d
         ? '<time class="news-date" datetime="' + esc(n.date) + '">' +
-          d.toLocaleDateString("de-CH", { day: "2-digit", month: "2-digit", year: "numeric" }) + "</time>"
+          d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) + "</time>"
         : "";
       return '<article class="panel news-item">' +
         '<div class="news-head">' +
@@ -350,7 +350,7 @@
     const grid = $("#servers");
     grid.innerHTML = "";
     if (!servers.length) {
-      grid.innerHTML = '<p class="empty">Keine Server gefunden. Lege im Ordner <code>servers/</code> eine Datei <code>1.js</code> an.</p>';
+      grid.innerHTML = '<p class="empty">No servers found. Add a file <code>1.js</code> to the <code>servers/</code> folder.</p>';
       return;
     }
     servers.forEach((s) => grid.appendChild(buildCard(s)));

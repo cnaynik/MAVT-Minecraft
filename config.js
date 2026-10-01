@@ -10,7 +10,7 @@
 window.SERVER_CONFIG = {
   // Anzeigename & Untertitel oben auf der Seite
   name: "MAVT Gaming",
-  tagline: "Die inoffiziellen Minecraft-Server des D-MAVT 2026 an der ETH Zürich.",
+  tagline: "The unofficial Minecraft servers of D-MAVT 2026 at ETH Zurich.",
 
   // Ordner mit den Server-Dateien. Die Seite lädt 1.js, 2.js, 3.js …
   // der Reihe nach, bis 3 Nummern hintereinander fehlen.
