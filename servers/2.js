@@ -37,15 +37,15 @@ addServer({
   description: "IP-Adresse:",
 
   whitelist: {
-    intro: "Ersti SMP ist per Whitelist geschützt. So wirst du freigeschaltet:",
+    intro: "Ersti SMP ist per Whitelist geschützt. So wirst du gewhitelisted:",
     steps: [
       "Tritt unserem Discord bei (Link unten) und schreibe eine Nachricht.",
-      "Schick deinen <b>Minecraft-Namen</b> (Java Edition) und kurz, dass du am D-MAVT studierst oder arbeitest.",
-      "Wir fügen dich zur Whitelist hinzu – meist innerhalb von 24 Stunden.",
+      "Schick deinen <b>Minecraft-Namen</b> (Java Edition).",
+      "Wir fügen dich zur Whitelist hinzu.",
       "IP <b>smp.mc.mavt-gaming.com</b> kopieren, in Minecraft unter <i>Multiplayer → Server hinzufügen</i> einfügen und losspielen.",
     ],
     buttons: [
-      { label: "Discord beitreten", url: "https://discord.gg/X9TbQr5Js" },
+      { label: "Discord beitreten", url: "https://discord.gg/2KkZfjtVT" },
     ],
   },
 
