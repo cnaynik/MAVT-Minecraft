@@ -36,18 +36,18 @@ addServer({
   ip: "smp.mc.mavt-gaming.com",
   description: "IP address:",
 
-  whitelist: {
-    intro: "Ersti SMP is protected by a whitelist. Here's how to get whitelisted:",
-    steps: [
-      "Join our Discord (link below) and send us a message.",
-      "Send us your <b>Minecraft username</b> (Java Edition).",
-      "We'll add you to the whitelist.",
-      "Copy the IP <b>smp.mc.mavt-gaming.com</b>, add it in Minecraft under <i>Multiplayer → Add Server</i> and start playing.",
-    ],
-    buttons: [
-      { label: "Join Discord", url: "https://discord.gg/2KkZfjtVT" },
-    ],
-  },
+  whitelist: false,
+//    intro: "Ersti SMP is protected by a whitelist. Here's how to get whitelisted:",
+//    steps: [
+//      "Join our Discord (link below) and send us a message.",
+//     "Send us your <b>Minecraft username</b> (Java Edition).",
+//      "We'll add you to the whitelist.",
+//      "Copy the IP <b>smp.mc.mavt-gaming.com</b>, add it in Minecraft under <i>Multiplayer → Add Server</i> and start playing.",
+//    ],
+//    buttons: [
+//      { label: "Join Discord", url: "https://discord.gg/2KkZfjtVT" },
+//    ],
+//  },
 
   rulesTitle: "Rules (draft)",
   rules: [
