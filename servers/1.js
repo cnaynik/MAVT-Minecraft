@@ -10,14 +10,25 @@
 //    ip           – Adresse, mit :port falls nicht Standard
 //    edition      – "java" (Standard) oder "bedrock"
 //    description  – optionaler kurzer Text auf der Karte
-//    whitelist    – false = Abzeichen „Keine Whitelist“
-//                   weglassen = Abzeichen „Whitelist“ (Standard)
 //    iconOverride – optional eigene Grafik, z. B. "assets/create.png"
 //    modpack      – optional, zeigt einen Modpack-Button:
 //                     url   – Link zum Modpack (Pflicht)
 //                     label – Button-Text (Standard: "Modpack herunterladen")
 //                     note  – kleiner Hinweis, z. B. Launcher oder Version
 //                   Ohne Modpack: Feld weglassen oder auskommentieren.
+//    whitelist    – false = keine Whitelist (Abzeichen „Keine Whitelist“)
+//                   Objekt = Whitelist mit Anleitung; das Abzeichen
+//                   „Whitelist“ öffnet sie als Pop-up:
+//                     { intro: "…", steps: ["…", "…"],
+//                       buttons: [{ label: "…", url: "https://…" }] }
+//                   In intro/steps sind <b>fett</b> und <i>kursiv</i> möglich.
+//                   weggelassen = Abzeichen „Whitelist“ ohne Pop-up
+//    rules        – optional, zeigt das Abzeichen „§ Regelwerk §“. Liste von
+//                   Regeln, nummeriert als § 1, § 2, …:
+//                     { title: "Überschrift", text: `Erklärung` }
+//                   Im text: **fett**, *kursiv*, Leerzeile = neuer Absatz.
+//    rulesTitle   – optional, Titel im Fenster (Standard: "Regelwerk")
+//    rulesIntro   – optional, kurzer Text über den Regeln
 // ============================================================
 
 addServer({
