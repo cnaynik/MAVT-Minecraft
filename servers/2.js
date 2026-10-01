@@ -13,39 +13,39 @@
 //    iconOverride – optional eigene Grafik, z. B. "assets/create.png"
 //    modpack      – optional, zeigt einen Modpack-Button:
 //                     url   – Link zum Modpack (Pflicht)
-//                     label – Button-Text (Standard: "Modpack herunterladen")
+//                     label – Button-Text (Standard: "Download modpack")
 //                     note  – kleiner Hinweis, z. B. Launcher oder Version
 //                   Ohne Modpack: Feld weglassen oder auskommentieren.
-//    whitelist    – false = keine Whitelist (Abzeichen „Keine Whitelist“)
+//    whitelist    – false = keine Whitelist (Abzeichen „No whitelist“)
 //                   Objekt = Whitelist mit Anleitung; das Abzeichen
 //                   „Whitelist“ öffnet sie als Pop-up:
 //                     { intro: "…", steps: ["…", "…"],
 //                       buttons: [{ label: "…", url: "https://…" }] }
 //                   In intro/steps sind <b>fett</b> und <i>kursiv</i> möglich.
 //                   weggelassen = Abzeichen „Whitelist“ ohne Pop-up
-//    rules        – optional, zeigt das Abzeichen „§ Regelwerk §“. Liste von
+//    rules        – optional, zeigt das Abzeichen „§ Rulebook §“. Liste von
 //                   Regeln, nummeriert als § 1, § 2, …:
 //                     { title: "Überschrift", text: `Erklärung` }
 //                   Im text: **fett**, *kursiv*, Leerzeile = neuer Absatz.
-//    rulesTitle   – optional, Titel im Fenster (Standard: "Regelwerk")
+//    rulesTitle   – optional, Titel im Fenster (Standard: "Rulebook")
 //    rulesIntro   – optional, kurzer Text über den Regeln
 // ============================================================
 
 addServer({
   name: "Ersti SMP",
   ip: "smp.mc.mavt-gaming.com",
-  description: "IP-Adresse:",
+  description: "IP address:",
 
   whitelist: {
-    intro: "Ersti SMP ist per Whitelist geschützt. So wirst du gewhitelisted:",
+    intro: "Ersti SMP is protected by a whitelist. Here's how to get whitelisted:",
     steps: [
-      "Tritt unserem Discord bei (Link unten) und schreibe eine Nachricht.",
-      "Schick deinen <b>Minecraft-Namen</b> (Java Edition).",
-      "Wir fügen dich zur Whitelist hinzu.",
-      "IP <b>smp.mc.mavt-gaming.com</b> kopieren, in Minecraft unter <i>Multiplayer → Server hinzufügen</i> einfügen und losspielen.",
+      "Join our Discord (link below) and send us a message.",
+      "Send us your <b>Minecraft username</b> (Java Edition).",
+      "We'll add you to the whitelist.",
+      "Copy the IP <b>smp.mc.mavt-gaming.com</b>, add it in Minecraft under <i>Multiplayer → Add Server</i> and start playing.",
     ],
     buttons: [
-      { label: "Discord beitreten", url: "https://discord.gg/2KkZfjtVT" },
+      { label: "Join Discord", url: "https://discord.gg/2KkZfjtVT" },
     ],
   },
 

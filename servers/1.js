@@ -13,21 +13,21 @@
 //    iconOverride – optional eigene Grafik, z. B. "assets/create.png"
 //    modpack      – optional, zeigt einen Modpack-Button:
 //                     url   – Link zum Modpack (Pflicht)
-//                     label – Button-Text (Standard: "Modpack herunterladen")
+//                     label – Button-Text (Standard: "Download modpack")
 //                     note  – kleiner Hinweis, z. B. Launcher oder Version
 //                   Ohne Modpack: Feld weglassen oder auskommentieren.
-//    whitelist    – false = keine Whitelist (Abzeichen „Keine Whitelist“)
+//    whitelist    – false = keine Whitelist (Abzeichen „No whitelist“)
 //                   Objekt = Whitelist mit Anleitung; das Abzeichen
 //                   „Whitelist“ öffnet sie als Pop-up:
 //                     { intro: "…", steps: ["…", "…"],
 //                       buttons: [{ label: "…", url: "https://…" }] }
 //                   In intro/steps sind <b>fett</b> und <i>kursiv</i> möglich.
 //                   weggelassen = Abzeichen „Whitelist“ ohne Pop-up
-//    rules        – optional, zeigt das Abzeichen „§ Regelwerk §“. Liste von
+//    rules        – optional, zeigt das Abzeichen „§ Rulebook §“. Liste von
 //                   Regeln, nummeriert als § 1, § 2, …:
 //                     { title: "Überschrift", text: `Erklärung` }
 //                   Im text: **fett**, *kursiv*, Leerzeile = neuer Absatz.
-//    rulesTitle   – optional, Titel im Fenster (Standard: "Regelwerk")
+//    rulesTitle   – optional, Titel im Fenster (Standard: "Rulebook")
 //    rulesIntro   – optional, kurzer Text über den Regeln
 // ============================================================
 
@@ -35,11 +35,11 @@ addServer({
   name: "ARS",
   ip: "ars.mc.mavt-gaming.com",
   whitelist: false,
-  description: "IP-Adresse:",
+  description: "IP address:",
 
   modpack: {
     url: "https://mega.nz/folder/GP5ChBiC#9i8eh4CP8EKiGbCnJFegTw",
-    label: "Modpack herunterladen",
+    label: "Download modpack",
     note: "NeoForge · Version 1.21.1",
   },
 });
