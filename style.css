@@ -230,8 +230,6 @@ main.wrap { padding-top: 32px; padding-bottom: 16px; }
   color: var(--text);
   border-color: var(--muted);
 }
-.tag-wl a { color: inherit; text-decoration: none; }
-.tag-wl a:hover { text-decoration: underline; }
 
 .desc { margin: 0; color: var(--muted); }
 .desc:empty { display: none; }
@@ -399,6 +397,66 @@ main.wrap { padding-top: 32px; padding-bottom: 16px; }
 }
 .news-body p { margin: 10px 0 0; }
 .news-body p:first-child { margin-top: 10px; }
+
+/* ---------- Regelwerk pro Server ---------- */
+.meta li { display: flex; }
+.tag-btn {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: inherit;
+  color: var(--text);
+  border-color: var(--muted);
+  cursor: pointer;
+}
+.tag-btn:hover { background: var(--surface); border-color: var(--text); text-decoration: underline; }
+.tag-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+.rulebook-dialog {
+  width: min(680px, calc(100% - 32px));
+  max-height: calc(100% - 48px);
+  padding: 0;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--accent);
+  border-radius: var(--radius-card);
+}
+.rulebook-dialog::backdrop { background: rgba(0, 0, 0, .55); }
+.rulebook-head {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 22px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.rulebook-title { margin: 0; font-size: 20px; line-height: 1.2; overflow-wrap: anywhere; }
+.rulebook-close { flex: none; font-size: 14px; }
+.rulebook-intro:empty { display: none; }
+.rulebook-intro { padding: 0 22px; color: var(--muted); }
+.rulebook-intro p { margin: 16px 0 0; }
+.dialog-body { padding: 4px 22px 22px; }
+.dialog-body .steps { margin: 18px 0 18px; }
+.rulebook { margin: 0; padding: 0; list-style: none; }
+.rule { padding: 16px 0; border-bottom: 1px solid var(--border); }
+.rule:last-child { border-bottom: 0; }
+.rule h3 { margin: 0; font-size: 17px; line-height: 1.3; }
+.rule .para {
+  display: inline-block;
+  min-width: 3em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.rule-text { padding-left: 3em; }
+.rule-text p { margin: 8px 0 0; }
+@media (max-width: 480px) {
+  .rule-text { padding-left: 0; }
+  .rulebook-head, .rulebook-intro, .dialog-body { padding-left: 16px; padding-right: 16px; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .card[data-state="loading"] .dot { animation: none; }

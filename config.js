@@ -17,29 +17,9 @@ window.SERVER_CONFIG = {
   // Die Reihenfolge auf der Seite entspricht der Nummer.
   serverDir: "servers/",
 
-  // So kommt man auf die Whitelist (gilt für alle Server)
-  whitelist: {
-    intro:
-      "Einige Server sind per Whitelist geschützt. So wirst du freigeschaltet:",
-    steps: [
-      "Tritt unserem Discord bei (Link unten) und schreibe eine Nachricht.",
-      "Schick deinen <b>Minecraft-Namen</b> (Java Edition) und kurz, dass du am D-MAVT studierst oder arbeitest.",
-      "Wir fügen dich zur Whitelist hinzu – meist innerhalb von 24 Stunden.",
-      "Server-IP kopieren, in Minecraft unter <i>Multiplayer → Server hinzufügen</i> einfügen und losspielen.",
-    ],
-    // Buttons unter den Schritten. Einträge mit leerer url werden ausgeblendet.
-    buttons: [
-      { label: "Discord beitreten", url: "https://discord.gg/X9TbQr5Js" },
-      //{ label: "Mail schreiben", url: "mailto:deine-adresse@ethz.ch?subject=Whitelist%20D-MAVT%20Server" },
-    ],
-  },
-
-  // Optional: kurze Regeln (leer lassen [] zum Ausblenden)
-  rules: [
-    "Kein Griefing, kein Stehlen.",
-    "Respektvoller Umgang – im Chat wie im Spiel.",
-    "Keine Cheats oder X-Ray-Mods.",
-  ],
+  // Whitelist-Anleitung und Regelwerk stehen pro Server in der
+  // jeweiligen Datei in "servers/" (Felder "whitelist" und "rules"),
+  // siehe servers/2.js. Sie öffnen sich über die Abzeichen auf der Karte.
 
   // Aktualisierungsintervall in Sekunden
   refreshSeconds: 60,

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Minecraft Server Status</title>
   <meta name="description" content="Live-Status der Minecraft-Server">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
   <header class="hero">
@@ -29,28 +29,23 @@
         <p class="empty">Server werden geladen …</p>
       </div>
     </section>
-
-    <div class="info-grid">
-      <section id="whitelist" class="panel" aria-labelledby="h-whitelist" hidden>
-        <h2 id="h-whitelist">Whitelist</h2>
-        <p id="whitelist-intro"></p>
-        <ol id="whitelist-steps" class="steps"></ol>
-        <div id="whitelist-buttons" class="btn-row"></div>
-      </section>
-
-      <section id="rules" class="panel" aria-labelledby="h-rules" hidden>
-        <h2 id="h-rules">Regeln</h2>
-        <ul id="rules-list" class="rules"></ul>
-      </section>
-    </div>
   </main>
+
+  <dialog id="info-dialog" class="rulebook-dialog" aria-labelledby="dialog-title">
+    <div class="rulebook-head">
+      <h2 id="dialog-title" class="dialog-title rulebook-title"></h2>
+      <button type="button" class="btn btn-ghost dialog-close rulebook-close" aria-label="Fenster schliessen">Schliessen</button>
+    </div>
+    <div class="dialog-intro rulebook-intro"></div>
+    <div class="dialog-body"></div>
+  </dialog>
 
   <footer class="wrap footer">
     <span id="updated"> </span>
     <span>Server Status via <a href="https://mc.willisch.xyz:8443/status" target="_blank" rel="noopener">Crafty</a></span>
   </footer>
 
-  <script src="config.js?v=4"></script>
-  <script src="app.js?v=4"></script>
+  <script src="config.js?v=7"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>

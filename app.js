@@ -85,23 +85,6 @@
   function renderStatic() {
     if (CFG.name) { $("#site-name").textContent = CFG.name; document.title = CFG.name + " – Server-Status"; }
     if (CFG.tagline) $("#site-tagline").textContent = CFG.tagline;
-
-    const wl = CFG.whitelist;
-    if (wl && ((wl.steps && wl.steps.length) || wl.intro)) {
-      $("#whitelist").hidden = false;
-      $("#whitelist-intro").innerHTML = wl.intro || "";
-      $("#whitelist-steps").innerHTML = (wl.steps || []).map((s) => "<li>" + s + "</li>").join("");
-      $("#whitelist-buttons").innerHTML = (wl.buttons || [])
-        .filter((b) => b && safeUrl(b.url))
-        .map((b, i) => '<a class="btn' + (i ? " btn-ghost" : "") + '" href="' + esc(safeUrl(b.url)) +
-          '" target="_blank" rel="noopener">' + esc(b.label || b.url) + "</a>")
-        .join("");
-    }
-
-    if (Array.isArray(CFG.rules) && CFG.rules.length) {
-      $("#rules").hidden = false;
-      $("#rules-list").innerHTML = CFG.rules.map((r) => "<li>" + esc(r) + "</li>").join("");
-    }
   }
 
   // ---------- Server-Karten ----------
@@ -118,11 +101,75 @@
       "</div>";
   }
 
+  // ---------- Pop-up-Fenster (Regelwerk & Whitelist pro Server) ----------
+  function openDialog(title, introHtml, bodyHtml, opener) {
+    const dlg = $("#info-dialog");
+    if (!dlg) return;
+    dlg.querySelector(".dialog-title").textContent = title;
+    dlg.querySelector(".dialog-intro").innerHTML = introHtml || "";
+    dlg.querySelector(".dialog-body").innerHTML = bodyHtml || "";
+    dlg._opener = opener;
+    if (typeof dlg.showModal === "function") dlg.showModal();
+    else dlg.setAttribute("open", "");
+    dlg.scrollTop = 0;
+  }
+
+  function setupDialog() {
+    const dlg = $("#info-dialog");
+    if (!dlg) return;
+    const close = () => {
+      if (!dlg.open) return;
+      if (typeof dlg.close === "function") dlg.close(); else dlg.removeAttribute("open");
+    };
+    dlg.querySelector(".dialog-close").addEventListener("click", close);
+    // Klick auf den abgedunkelten Hintergrund schliesst das Fenster
+    dlg.addEventListener("click", (e) => { if (e.target === dlg) close(); });
+    dlg.addEventListener("close", () => { if (dlg._opener) dlg._opener.focus(); });
+  }
+
+  // Regelwerk
+  function hasRules(s) {
+    return Array.isArray(s.rules) && s.rules.length > 0;
+  }
+  function openRules(s, opener) {
+    const body = '<ol class="rulebook">' + s.rules.map((r, i) => {
+      if (typeof r === "string") r = { title: r };
+      return '<li class="rule">' +
+        '<h3><span class="para">§ ' + (i + 1) + "</span>" + esc(r.title || "") + "</h3>" +
+        (r.text ? '<div class="rule-text">' + miniMarkdown(r.text) + "</div>" : "") +
+        "</li>";
+    }).join("") + "</ol>";
+    openDialog((s.name || s.ip) + " – " + (s.rulesTitle || "Regelwerk"),
+      s.rulesIntro ? miniMarkdown(s.rulesIntro) : "", body, opener);
+  }
+
+  // Whitelist – steht nur in der jeweiligen Server-Datei:
+  //   whitelist: false   = keine Whitelist
+  //   whitelist: { … }   = Whitelist mit eigener Anleitung (Pop-up)
+  //   weggelassen/true   = Whitelist ohne Anleitung (nur Anzeige)
+  function whitelistInfo(s) {
+    const w = s.whitelist;
+    if (!w || typeof w !== "object") return null;
+    const wl = { intro: w.intro || "", steps: w.steps || [], buttons: w.buttons || [] };
+    return (wl.intro || wl.steps.length || wl.buttons.length) ? wl : null;
+  }
+  function openWhitelist(s, wl, opener) {
+    const body =
+      (wl.steps.length ? '<ol class="steps">' + wl.steps.map((x) => "<li>" + x + "</li>").join("") + "</ol>" : "") +
+      '<div class="btn-row">' + wl.buttons
+        .filter((b) => b && safeUrl(b.url))
+        .map((b, i) => '<a class="btn' + (i ? " btn-ghost" : "") + '" href="' + esc(safeUrl(b.url)) +
+          '" target="_blank" rel="noopener">' + esc(b.label || b.url) + "</a>")
+        .join("") + "</div>";
+    openDialog((s.name || s.ip) + " – Whitelist", wl.intro ? "<p>" + wl.intro + "</p>" : "", body, opener);
+  }
+
   function buildCard(s) {
     const card = document.createElement("article");
     card.className = "card";
     card.dataset.state = "loading";
     const edition = (s.edition || "java").toLowerCase() === "bedrock" ? "Bedrock" : "Java";
+    const wlInfo = whitelistInfo(s);
     card.innerHTML =
       '<div class="card-head">' +
         '<img class="icon placeholder" alt="" width="56" height="56">' +
@@ -134,9 +181,14 @@
       "</div>" +
       '<div class="motd"></div>' +
       '<ul class="meta">' +
+        (hasRules(s)
+          ? '<li><button type="button" class="tag tag-btn btn-rules" aria-haspopup="dialog">§ Regelwerk §</button></li>'
+          : "") +
         (s.whitelist === false
           ? '<li class="tag tag-open">Keine Whitelist</li>'
-          : '<li class="tag tag-wl"><a href="#whitelist" title="So kommst du auf die Whitelist">Whitelist</a></li>') +
+          : wlInfo
+            ? '<li><button type="button" class="tag tag-btn btn-wl" aria-haspopup="dialog">Whitelist</button></li>'
+            : '<li class="tag tag-wl">Whitelist</li>') +
         '<li class="tag">' + edition + '</li><li class="tag v-tag" hidden></li></ul>' +
       '<p class="desc">' + esc(s.description || "") + "</p>" +
       '<div class="ip-row"><code>' + esc(s.ip) + "</code>" +
@@ -160,6 +212,11 @@
       copyBtn.textContent = "Kopiert ✓";
       setTimeout(() => (copyBtn.textContent = "Kopieren"), 1600);
     });
+
+    const wlBtn = card.querySelector(".btn-wl");
+    if (wlBtn) wlBtn.addEventListener("click", () => openWhitelist(s, wlInfo, wlBtn));
+    const rulesBtn = card.querySelector(".btn-rules");
+    if (rulesBtn) rulesBtn.addEventListener("click", () => openRules(s, rulesBtn));
 
     s._card = card;
     return card;
@@ -285,6 +342,7 @@
 
   async function init() {
     renderStatic();
+    setupDialog();
     await loadNewsFiles();
     renderNews();
     await loadServerFiles();
