@@ -36,7 +36,7 @@ addServer({
   ip: "smp.mc.mavt-gaming.com",
   description: "IP address:",
 
-  whitelist: true,
+  whitelist: {
     intro: "Ersti SMP is protected by a whitelist. Here's how to get whitelisted:",
     steps: [
       "Join our Discord (link below).",
