@@ -36,18 +36,18 @@ addServer({
   ip: "smp.mc.mavt-gaming.com",
   description: "IP address:",
 
-  whitelist: false,
-//    intro: "Ersti SMP is protected by a whitelist. Here's how to get whitelisted:",
-//    steps: [
-//      "Join our Discord (link below) and send us a message.",
-//     "Send us your <b>Minecraft username</b> (Java Edition).",
-//      "We'll add you to the whitelist.",
-//      "Copy the IP <b>smp.mc.mavt-gaming.com</b>, add it in Minecraft under <i>Multiplayer → Add Server</i> and start playing.",
-//    ],
-//    buttons: [
-//      { label: "Join Discord", url: "https://discord.gg/2KkZfjtVT" },
-//    ],
-//  },
+  whitelist: true,
+    intro: "Ersti SMP is protected by a whitelist. Here's how to get whitelisted:",
+    steps: [
+      "Join our Discord (link below).",
+     "Send us your <b>Minecraft username</b> (Java Edition) under #whitelist.",
+      "We'll add you to the whitelist.",
+      "Copy the IP <b>smp.mc.mavt-gaming.com</b>, add it in Minecraft under <i>Multiplayer → Add Server</i> and start playing.",
+    ],
+    buttons: [
+      { label: "Join Discord", url: "https://discord.gg/KSjcCHbVg" },
+    ],
+  },
 
   rulesTitle: "Rules (draft)",
   rules: [
@@ -57,21 +57,19 @@ addServer({
     },
     {
       title: "No cheating",
-      text: `Using mods, resource packs, macros or other tools to gain an unfair advantage is prohibited.`,
+      text: `Using mods, resourcepacks, macros, and other resources to gain an unfair advantage is banned.`,
     },
     {
       title: "No griefing of farms or significant builds",
       text: `
-What counts as "significant" is up to community consensus. As a general guideline: an underground base used purely for regearing, with simple decoration, is not a significant build – a Mona Lisa replica with a base inside it is.
-
-(The "loophole" of putting your base inside your own build is intentional – think of it as a reward for your contribution.)
-
-Stealing is allowed in any scenario (there's an item called the ender chest), but don't be weird and steal people's building materials.
+What counts as "significant" is up to community consensus, but as a general guideline, an underground base for pure regearing with simple decoration isn't a significant build, but a mona lisa replica with a base inside it is.
+(The "loophole" of putting a base inside your own build is intentional, think of it as a reward for your contribution)
+Stealing is allowed in any scenario (there's this item called the enderchest), but don't be weird and steal people's building material
 `,
     },
     {
-      title: "Respawn anchors and end crystals",
-      text: `To be decided – depends on the outcome of the poll.`,
+      title: "Respawn anchors/end crystals are only allowed in PvP if all parties consent to it",
+      text: `We love consensual Crystal PVP :D.`,
     },
     {
       title: "No racism, sexism, homophobia, transphobia, etc.",
