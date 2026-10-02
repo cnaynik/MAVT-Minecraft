@@ -24,8 +24,7 @@ addNews({
 
   text: `Be there or be square! Or should I say, be there and be square?
 
-Server ip: smp.mc.mavt-gaming.com
-Version: 26.3
+Server ip: smp.mc.mavt-gaming.com, Version: 26.3
 We have simple voice chat support!
 
 You can technically join with older versions since the server has viabackwards, but I strongly recommand 26.3 to enjoy all the features (there's a dappled forest near spawn!)
