@@ -49,7 +49,7 @@ addServer({
     ],
   },
 
-  rulesTitle: "Rules (draft)",
+  rulesTitle: "Ersti SMP Rules",
   rules: [
     {
       title: "Be a decent human being",
